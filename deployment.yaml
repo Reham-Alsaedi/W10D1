@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productapp-deployment
+  labels:
+    app: productapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productapp
+  template:
+    metadata:
+      labels:
+        app: productapp
+    spec:
+      containers:
+        - name: productapp
+          image: rehamabalsaedi/productapp:latest
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productapp-service
+spec:
+  selector:
+    app: productapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/rehamalsaedi/W10D1/ProductApp/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.ProductApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.ProductApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.build.ProductApp.props",
+      "PackagePath": "build\\ProductApp.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.ProductApp.props",
+      "PackagePath": "buildMultiTargeting\\ProductApp.props"
+    },
+    {
+      "Id": "obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.ProductApp.props",
+      "PackagePath": "buildTransitive\\ProductApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

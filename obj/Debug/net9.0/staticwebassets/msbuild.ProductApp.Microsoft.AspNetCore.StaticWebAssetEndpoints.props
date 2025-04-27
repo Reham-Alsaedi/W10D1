@@ -1,0 +1,16 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/ProductApp/index.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2seyxnM2lqn0RxGuAXlJUOLw4kiZ5Y/dlVZ\u002BlvdzKNQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3136"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00222seyxnM2lqn0RxGuAXlJUOLw4kiZ5Y/dlVZ\u002BlvdzKNQ=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Apr 2025 10:26:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ProductApp/index.uycunljq6d.html">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"uycunljq6d"},{"Name":"integrity","Value":"sha256-2seyxnM2lqn0RxGuAXlJUOLw4kiZ5Y/dlVZ\u002BlvdzKNQ="},{"Name":"label","Value":"_content/ProductApp/index.html"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3136"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u00222seyxnM2lqn0RxGuAXlJUOLw4kiZ5Y/dlVZ\u002BlvdzKNQ=\u0022"},{"Name":"Last-Modified","Value":"Sun, 27 Apr 2025 10:26:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

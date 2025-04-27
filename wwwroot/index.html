@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product API Frontend</title>
+</head>
+<body>
+    <h1>Welcome to Product API</h1>
+
+    <!-- Products -->
+    <h2>Product List</h2>
+    <ul id="productList"></ul>
+
+    <!-- Add Product -->
+    <h3>Add Product</h3>
+    <form id="addProductForm">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" required>
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" required>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <!-- Fetch Product by ID -->
+    <h3>Fetch Product by ID</h3>
+    <form id="fetchProductForm">
+        <label for="productId">Product ID:</label>
+        <input type="number" id="productId" required>
+        <button type="submit">Fetch Product</button>
+    </form>
+
+    <div id="productDetails"></div>
+
+    <script>
+        // Function to fetch and display all products
+        async function fetchProducts() {
+            try {
+                const response = await fetch('/api/products');
+                const data = await response.json();
+                const products = data.products;
+                const currency = data.currency;
+
+                const productList = document.getElementById('productList');
+                productList.innerHTML = '';
+
+                products.forEach(product => {
+                    const li = document.createElement('li');
+                    li.textContent = `${product.name} - ${currency} ${product.price}`;
+                    productList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+
+        // Function to add a new product
+        async function addProduct(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('productName').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+
+            const newProduct = { name, price };
+
+            try {
+                const response = await fetch('/api/products', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newProduct)
+                });
+
+                if (response.ok) {
+                    fetchProducts();
+                    document.getElementById('addProductForm').reset();
+                } else {
+                    console.error('Error adding product:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error adding product:', error);
+            }
+        }
+
+        // Function to fetch product by ID
+        async function fetchProductById(event) {
+            event.preventDefault();
+
+            const id = document.getElementById('productId').value;
+
+            try {
+                const response = await fetch(`/api/products/${id}`);
+
+                if (response.ok) {
+                    const product = await response.json();
+                    const productDetails = document.getElementById('productDetails');
+                    productDetails.innerHTML = `<p><strong>Name:</strong> ${product.name}</p>
+                                                <p><strong>Price:</strong> ${product.price}</p>`;
+                } else if (response.status === 404) {
+                    document.getElementById('productDetails').innerHTML = '<p>Product not found.</p>';
+                } else {
+                    console.error('Error fetching product:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching product by ID:', error);
+            }
+
+            document.getElementById('fetchProductForm').reset();
+        }
+
+        // Event listeners
+        document.getElementById('addProductForm').addEventListener('submit', addProduct);
+        document.getElementById('fetchProductForm').addEventListener('submit', fetchProductById);
+
+        // Initial fetch of products
+        window.onload = fetchProducts;
+    </script>
+</body>
+</html>
+
+
